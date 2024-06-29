@@ -9,8 +9,22 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 # install proper tools
 RUN apt-get update && \
-    apt-get install -y vim tmux nano htop autoconf automake build-essential libtool cmake git sudo software-properties-common gperf libselinux1-dev  bison texinfo flex zlib1g-dev libexpat1-dev libmpg123-dev wget curl python3-pip python-pip unzip pkg-config clang llvm-dev apt-transport-https ca-certificates libc++-dev gcc-5-plugin-dev zip tree re2c bison libtool
-
+    apt-get install -y vim tmux nano htop autoconf automake build-essential \
+    libtool cmake git sudo software-properties-common gperf libselinux1-dev \
+    bison texinfo flex zlib1g-dev libexpat1-dev libmpg123-dev wget curl \
+    python3-pip unzip pkg-config clang llvm-dev apt-transport-https \
+    ca-certificates libc++-dev zip tree re2c && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y vim tmux nano htop autoconf automake build-essential \
+    libtool cmake git sudo software-properties-common gperf libselinux1-dev \
+    bison texinfo flex zlib1g-dev libexpat1-dev libmpg123-dev wget curl \
+    python3-pip unzip pkg-config clang llvm-dev apt-transport-https \
+    ca-certificates libc++-dev zip tree re2c && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+    
 RUN apt-get install -y git build-essential wget zlib1g-dev golang-go python-pip python-dev build-essential cmake
 
 # lava
